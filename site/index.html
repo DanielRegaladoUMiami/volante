@@ -37,10 +37,10 @@
         <h1 class="hero-title">Te llevamos a ti <span class="accent">y a tu carro</span> a casa.</h1>
         <p class="hero-sub">Un conductor bilingüe de confianza maneja tu propio carro hasta tu casa. Sin membresía. Sin mínimo. Precio fijo.</p>
 
-        <!-- Formspree: crea un form gratis en https://formspree.io y reemplaza YOUR_FORM_ID -->
-        <form id="unete" class="join-card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <!-- Google Sheet (Apps Script): reemplaza __SHEET_WEBAPP_URL__ con la URL /exec del web app. Ver docs/waitlist-google-sheet-setup.md -->
+        <form id="unete" class="join-card" action="__SHEET_WEBAPP_URL__" method="POST">
           <input type="hidden" name="lang" value="es" />
-          <input type="hidden" name="_subject" value="Nuevo signup — Volante (ES)" />
+          <input type="hidden" name="source" value="landing-es" />
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
           <label class="join-label" for="contact">¿Dónde sales esta noche?</label>
           <div id="flash" role="status" aria-live="polite"></div>
@@ -120,16 +120,16 @@
     var flash = document.getElementById('flash');
     var OK = "¡Listo! Te avisamos en cuanto lancemos en tu zona. 🚗";
     var ERR = "Algo salió mal. Inténtalo de nuevo.";
-    var SOON = "¡Pronto! (falta conectar Formspree para activar la lista.)";
+    var SOON = "¡Pronto! (falta conectar la hoja de Google para activar la lista.)";
     function show(kind, msg) {
       flash.className = "flash " + (kind === "ok" ? "flash-ok" : "flash-err");
       flash.textContent = msg;
     }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (form.action.indexOf('YOUR_FORM_ID') !== -1) { show('ok', SOON); return; }
-      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-        .then(function (r) { if (r.ok) { form.reset(); show('ok', OK); } else { show('err', ERR); } })
+      if (form.action.indexOf('__SHEET_WEBAPP_URL__') !== -1) { show('ok', SOON); return; }
+      fetch(form.action, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
+        .then(function () { form.reset(); show('ok', OK); })
         .catch(function () { show('err', ERR); });
     });
   })();

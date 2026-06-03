@@ -37,10 +37,10 @@
         <h1 class="hero-title">We drive you <span class="accent">and your car</span> home.</h1>
         <p class="hero-sub">A trusted bilingual driver drives your own car home. No membership. No minimum. Flat fee.</p>
 
-        <!-- Formspree: create a free form at https://formspree.io and replace YOUR_FORM_ID -->
-        <form id="unete" class="join-card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <!-- Google Sheet (Apps Script): replace __SHEET_WEBAPP_URL__ with the web app /exec URL. See docs/waitlist-google-sheet-setup.md -->
+        <form id="unete" class="join-card" action="__SHEET_WEBAPP_URL__" method="POST">
           <input type="hidden" name="lang" value="en" />
-          <input type="hidden" name="_subject" value="New signup — Volante (EN)" />
+          <input type="hidden" name="source" value="landing-en" />
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
           <label class="join-label" for="contact">Where are you out tonight?</label>
           <div id="flash" role="status" aria-live="polite"></div>
@@ -120,16 +120,16 @@
     var flash = document.getElementById('flash');
     var OK = "You're in! We'll reach out the moment we launch near you. 🚗";
     var ERR = "Something went wrong. Please try again.";
-    var SOON = "Coming soon! (Formspree isn't connected yet.)";
+    var SOON = "Coming soon! (Google Sheet isn't connected yet.)";
     function show(kind, msg) {
       flash.className = "flash " + (kind === "ok" ? "flash-ok" : "flash-err");
       flash.textContent = msg;
     }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (form.action.indexOf('YOUR_FORM_ID') !== -1) { show('ok', SOON); return; }
-      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-        .then(function (r) { if (r.ok) { form.reset(); show('ok', OK); } else { show('err', ERR); } })
+      if (form.action.indexOf('__SHEET_WEBAPP_URL__') !== -1) { show('ok', SOON); return; }
+      fetch(form.action, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
+        .then(function () { form.reset(); show('ok', OK); })
         .catch(function () { show('err', ERR); });
     });
   })();

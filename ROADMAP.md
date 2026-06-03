@@ -20,7 +20,7 @@
 - [x] FastAPI + Jinja2 + custom CSS (server-rendered for SEO); 6 tests green
 - [x] Deploy live (free) — static site on GitHub Pages → https://danielregaladoumiami.github.io/volante/
       (source in `site/`, auto-deploy via `.github/workflows/pages.yml`)
-- [ ] Connect Formspree (replace `YOUR_FORM_ID` in `site/index.html` + `site/en.html`) so signups are captured
+- [ ] Connect Google Sheet (Apps Script) — replace `__SHEET_WEBAPP_URL__` in `site/index.html` + `site/en.html`; see `docs/waitlist-google-sheet-setup.md`
 - [ ] Point a custom domain (add `site/CNAME`) once chosen
 - [ ] Full booking form (pickup, drop-off, passengers, car make/model) — folds into M3
 
