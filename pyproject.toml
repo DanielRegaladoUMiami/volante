@@ -6,7 +6,13 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
 authors = [{ name = "Daniel Regalado" }]
-dependencies = []
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "jinja2>=3.1",
+    "sqlmodel>=0.0.22",
+    "python-multipart>=0.0.9",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -16,7 +22,12 @@ build-backend = "hatchling.build"
 packages = ["src/volante"]
 
 [dependency-groups]
-dev = ["ruff>=0.6", "pre-commit>=3.7", "pytest>=8.0"]
+dev = [
+    "ruff>=0.6",
+    "pre-commit>=3.7",
+    "pytest>=8.0",
+    "httpx>=0.28.1",
+]
 
 [tool.ruff]
 line-length = 100

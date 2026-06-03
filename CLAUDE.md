@@ -51,8 +51,18 @@ overall go/no-go.
 ```bash
 uv sync
 uv run pre-commit install
-# backend run command added in M2 (FastAPI)
+
+# Landing + waitlist (M2) — bilingual concierge page, captures signups to local SQLite
+uv run uvicorn volante.main:app --reload --port 8011
+#   http://127.0.0.1:8011        ES landing (default)
+#   http://127.0.0.1:8011/?lang=en   English
+#   http://127.0.0.1:8011/admin/waitlist   signup readout (set VOLANTE_ADMIN_TOKEN to protect)
+
+uv run pytest      # tests
+uv run ruff check  # lint
 ```
+> Note: if Cursor's Python extension holds the venv lock, use `uv run --no-sync ...`.
+> Secrets (Supabase/Stripe/Twilio) go in `.env` (gitignored) — see `.env.example`. Never paste them in chat.
 
 ## Where things live
 - Backend source: `src/volante/`

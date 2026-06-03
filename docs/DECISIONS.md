@@ -33,6 +33,21 @@ console) · Next.js + Tailwind on Vercel · Stripe (authorize-hold → capture) 
 bound.** The broker premium sets the minimum viable fare. Pre-coverage, the page may collect
 waitlist/demand signal and run only *unpaid* friends-&-family test rides.
 
+## 2026-06-02 — M2 build decisions
+
+**D6 — Landing built in FastAPI + Jinja2 + custom CSS** (server-rendered), not Next.js, for v1.
+- *Why:* 100% Python (Daniel's strength, one runtime, runs with `uv run`), no Node toolchain, no
+  secrets — signups persist to local SQLite. SSR HTML is fully SEO-friendly (the neighborhood-search
+  play). CLAUDE.md pre-sanctioned this Python substitute. Can migrate the marketing page to Next.js
+  later if needed. *Veto-able by Daniel.*
+
+**D7 — Visual direction: "Miami cálido" (warm)** — cream `#FFF6EC` + teal `#0E6E6E` + coral `#FF6B5E`,
+Fraunces + DM Sans. Chosen by Daniel over premium-dark and trust-light, to lean into the warm,
+cultural "conductor elegido" lane.
+
+**D8 — M2 scope = landing + *waitlist*, not paid booking.** Goes live with no secrets to collect
+demand signal now; Stripe/Twilio/Supabase (paid booking) deferred to M3, gated on bound insurance.
+
 ---
 
 ### How this decision was reached

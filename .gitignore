@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Volante local data
+volante.db
+*.db
+*.db-journal
+.env

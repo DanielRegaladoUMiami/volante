@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/?lang={{ lang }}">volante</a>
+    <nav class="nav-links">
+      <a href="#como">{{ t.nav_how }}</a>
+      <a href="#porque">{{ t.nav_why }}</a>
+      <a class="lang-toggle" href="/?lang={{ other_lang }}" hreflang="{{ other_lang }}">{{ t.switch_to }}</a>
+      <a class="btn btn-sm" href="#unete">{{ t.nav_join }}</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="badge">{{ t.badge }}</span>
+        <h1 class="hero-title">
+          {{ t.hero_pre }} <span class="accent">{{ t.hero_accent }}</span> {{ t.hero_post }}
+        </h1>
+        <p class="hero-sub">{{ t.hero_sub }}</p>
+
+        <form id="unete" class="join-card" method="post" action="/waitlist">
+          <input type="hidden" name="lang" value="{{ lang }}" />
+          <label class="join-label" for="contact">{{ t.form_label }}</label>
+          {% if joined %}
+          <p class="flash flash-ok">{{ t.success }}</p>
+          {% elif err %}
+          <p class="flash flash-err">{{ t.error }}</p>
+          {% endif %}
+          <div class="join-row">
+            <select name="zone" aria-label="zona">
+              <option value="">{{ t.form_zone_default }}</option>
+              {% for z in zones %}<option value="{{ z }}">{{ z }}</option>{% endfor %}
+              <option value="Otra">{{ t.form_zone_other }}</option>
+            </select>
+            <input id="contact" name="contact" type="text" inputmode="email"
+                   placeholder="{{ t.form_contact_ph }}" autocomplete="email" required />
+            <button class="btn" type="submit">{{ t.form_cta }} <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="join-micro">{{ t.form_micro }}</p>
+        </form>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="glow"></div>
+        <div class="wheel">🚗</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINS -->
+  <section class="section pains">
+    <div class="container">
+      <span class="kicker">{{ t.pains_kicker }}</span>
+      <h2 class="section-title">{{ t.pains_title }}</h2>
+      <div class="cards-3">
+        <article class="card pain"><span class="pill">DUI ~$10k</span><h3>{{ t.pain1_t }}</h3><p>{{ t.pain1_d }}</p></article>
+        <article class="card pain"><span class="pill">$516 + Uber</span><h3>{{ t.pain2_t }}</h3><p>{{ t.pain2_d }}</p></article>
+        <article class="card pain"><span class="pill">Surge $40–100+</span><h3>{{ t.pain3_t }}</h3><p>{{ t.pain3_d }}</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="como" class="section how">
+    <div class="container">
+      <span class="kicker">{{ t.how_kicker }}</span>
+      <h2 class="section-title">{{ t.how_title }}</h2>
+      <ol class="steps">
+        <li><span class="step-n">1</span><h3>{{ t.step1_t }}</h3><p>{{ t.step1_d }}</p></li>
+        <li><span class="step-n">2</span><h3>{{ t.step2_t }}</h3><p>{{ t.step2_d }}</p></li>
+        <li><span class="step-n">3</span><h3>{{ t.step3_t }}</h3><p>{{ t.step3_d }}</p></li>
+        <li><span class="step-n">4</span><h3>{{ t.step4_t }}</h3><p>{{ t.step4_d }}</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="porque" class="section why">
+    <div class="container why-grid">
+      <div>
+        <span class="kicker">{{ t.why_kicker }}</span>
+        <h2 class="section-title">{{ t.why_title }}</h2>
+      </div>
+      <ul class="why-list">
+        <li>{{ t.why1 }}</li>
+        <li>{{ t.why2 }}</li>
+        <li>{{ t.why3 }}</li>
+        <li>{{ t.why4 }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta">
+    <div class="container cta-band">
+      <h2>{{ t.cta_title }}</h2>
+      <p>{{ t.cta_sub }}</p>
+      <a class="btn btn-lg" href="#unete">{{ t.nav_join }} <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="foot-note">{{ t.footer_note }}</p>
+    <p class="foot-legal">{{ t.footer_legal }}</p>
+  </div>
+</footer>
+{% endblock %}

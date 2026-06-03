@@ -14,9 +14,12 @@
 - [x] Public repo, Apache 2.0, CLAUDE.md + ROADMAP.md + pyproject.toml (uv) + ruff pre-commit
 - [x] Labels + milestone + first commit
 
-### M2 — Bilingual concierge landing + booking page
-- [ ] ES-default / EN-toggle page, "lleva tu carro" positioning, flat-fare zone map (Next.js + Tailwind → Vercel)
-- [ ] Booking form (pickup, drop-off, passengers, car make/model, WhatsApp) posting to backend
+### M2 — Bilingual concierge landing + waitlist
+- [x] ES-default / EN-toggle landing page, "lleva tu carro" positioning, warm "Miami cálido" palette
+- [x] Waitlist capture (zone + WhatsApp/email) → SQLite, `/admin/waitlist` readout, no secrets
+- [x] FastAPI + Jinja2 + custom CSS (server-rendered for SEO); 6 tests green
+- [ ] Deploy to Render + point a domain (go live to collect real signups)
+- [ ] Full booking form (pickup, drop-off, passengers, car make/model) — folds into M3
 
 ### M3 — Booking backend + fare quote + Stripe hold
 - [ ] FastAPI: booking endpoint, hard-coded zone/distance fare lookup, writes ride to Supabase
