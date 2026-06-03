@@ -18,7 +18,10 @@
 - [x] ES-default / EN-toggle landing page, "lleva tu carro" positioning, warm "Miami cálido" palette
 - [x] Waitlist capture (zone + WhatsApp/email) → SQLite, `/admin/waitlist` readout, no secrets
 - [x] FastAPI + Jinja2 + custom CSS (server-rendered for SEO); 6 tests green
-- [ ] Deploy to Render + point a domain (go live to collect real signups)
+- [x] Deploy live (free) — static site on GitHub Pages → https://danielregaladoumiami.github.io/volante/
+      (source in `site/`, auto-deploy via `.github/workflows/pages.yml`)
+- [ ] Connect Formspree (replace `YOUR_FORM_ID` in `site/index.html` + `site/en.html`) so signups are captured
+- [ ] Point a custom domain (add `site/CNAME`) once chosen
 - [ ] Full booking form (pickup, drop-off, passengers, car make/model) — folds into M3
 
 ### M3 — Booking backend + fare quote + Stripe hold
