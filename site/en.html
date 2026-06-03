@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Volante — We drive you AND your car home | Miami</title>
+  <meta name="description" content="A trusted driver drives your own car home in Miami. No membership, no minimum, flat fee. Bilingual." />
+  <meta property="og:title" content="Volante — We drive you AND your car home" />
+  <meta property="og:description" content="A trusted driver drives your own car home in Miami. No membership, no minimum, flat fee." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#FF6B5E" />
+  <link rel="alternate" hreflang="es" href="./index.html" />
+  <link rel="alternate" hreflang="en" href="./en.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="./en.html">volante</a>
+    <nav class="nav-links">
+      <a class="nav-how" href="#como">How it works</a>
+      <a class="nav-why" href="#porque">Why Volante</a>
+      <a class="lang-toggle" href="./index.html" hreflang="es">ES</a>
+      <a class="btn btn-sm" href="#unete">Join the list</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="badge">Made in Miami · Bilingual</span>
+        <h1 class="hero-title">We drive you <span class="accent">and your car</span> home.</h1>
+        <p class="hero-sub">A trusted bilingual driver drives your own car home. No membership. No minimum. Flat fee.</p>
+
+        <!-- Formspree: create a free form at https://formspree.io and replace YOUR_FORM_ID -->
+        <form id="unete" class="join-card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="hidden" name="lang" value="en" />
+          <input type="hidden" name="_subject" value="New signup — Volante (EN)" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+          <label class="join-label" for="contact">Where are you out tonight?</label>
+          <div id="flash" role="status" aria-live="polite"></div>
+          <div class="join-row">
+            <select name="zone" aria-label="area">
+              <option value="">Choose your area</option>
+              <option>Brickell</option><option>Downtown</option><option>Wynwood</option>
+              <option>South Beach</option><option>Coral Gables</option><option>Coconut Grove</option>
+              <option value="Other">Other</option>
+            </select>
+            <input id="contact" name="contact" type="text" inputmode="email" placeholder="Your WhatsApp or email" autocomplete="email" required />
+            <button class="btn" type="submit">Join the list <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="join-micro">We'll text you when we launch in your area. Zero spam.</p>
+        </form>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="glow"></div><div class="wheel">🚗</div></div>
+    </div>
+  </section>
+
+  <section class="section pains">
+    <div class="container">
+      <span class="kicker">The problem</span>
+      <h2 class="section-title">Every other option costs you more</h2>
+      <div class="cards-3">
+        <article class="card pain"><span class="pill">DUI ~$10k</span><h3>A DUI</h3><p>~$10,000 all-in in Florida — never mind the scare.</p></article>
+        <article class="card pain"><span class="pill">$516 + Uber</span><h3>The tow</h3><p>$516 + $30 if you leave your car in South Beach — plus the Uber back tomorrow.</p></article>
+        <article class="card pain"><span class="pill">Surge $40–100+</span><h3>The surge</h3><p>$40–$100+ on a party night… and your car is still stranded.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="como" class="section how">
+    <div class="container">
+      <span class="kicker">It's simple</span>
+      <h2 class="section-title">How it works</h2>
+      <ol class="steps">
+        <li><span class="step-n">1</span><h3>Request</h3><p>Tell us where you are and where you're headed.</p></li>
+        <li><span class="step-n">2</span><h3>Your driver arrives</h3><p>Bilingual and vetted, with their name and photo before they show up.</p></li>
+        <li><span class="step-n">3</span><h3>They drive your car</h3><p>They take you and your car home, safe and sound.</p></li>
+        <li><span class="step-n">4</span><h3>Home safe</h3><p>Your car in your driveway. No tow, no extra trip tomorrow.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="porque" class="section why">
+    <div class="container why-grid">
+      <div><span class="kicker">The difference</span><h2 class="section-title">Why Volante</h2></div>
+      <ul class="why-list">
+        <li>No $99/month membership</li>
+        <li>No 2-hour minimum</li>
+        <li>Bilingual, made in Miami</li>
+        <li>Your car stays with you</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="container cta-band">
+      <h2>Be among the first in Miami</h2>
+      <p>Launching soon in Brickell, Wynwood and South Beach.</p>
+      <a class="btn btn-lg" href="#unete">Join the list <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="foot-note">Volante connects customers with independent drivers. In development — not yet operating.</p>
+    <p class="foot-legal">© 2026 Volante · Miami, FL</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('unete');
+    var flash = document.getElementById('flash');
+    var OK = "You're in! We'll reach out the moment we launch near you. 🚗";
+    var ERR = "Something went wrong. Please try again.";
+    var SOON = "Coming soon! (Formspree isn't connected yet.)";
+    function show(kind, msg) {
+      flash.className = "flash " + (kind === "ok" ? "flash-ok" : "flash-err");
+      flash.textContent = msg;
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.action.indexOf('YOUR_FORM_ID') !== -1) { show('ok', SOON); return; }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function (r) { if (r.ok) { form.reset(); show('ok', OK); } else { show('err', ERR); } })
+        .catch(function () { show('err', ERR); });
+    });
+  })();
+</script>
+</body>
+</html>
