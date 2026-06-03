@@ -48,6 +48,14 @@ cultural "conductor elegido" lane.
 **D8 — M2 scope = landing + *waitlist*, not paid booking.** Goes live with no secrets to collect
 demand signal now; Stripe/Twilio/Supabase (paid booking) deferred to M3, gated on bound insurance.
 
+**D9 — Deploy the waitlist landing as a STATIC site on GitHub Pages + Formspree** (free, instant,
+no cold starts). Static mirror lives in `site/` (ES `index.html` + EN `en.html`, shared `styles.css`),
+auto-deployed by `.github/workflows/pages.yml`. The form posts to Formspree (free) — signups land
+there instead of our DB during the waitlist phase. The FastAPI app stays in the repo as the M3
+backend (booking/Stripe/Twilio); we re-converge on it once insurance clears. *Rationale:* the backend
+isn't needed until M3 (weeks out, gated on insurance), and a static page gives the best landing UX
+(instant, $0). Keep `site/` and `src/volante/` copy in sync until then.
+
 ---
 
 ### How this decision was reached
