@@ -221,3 +221,6 @@ volante.db
 *.db
 *.db-journal
 .env
+
+# agy CLI cache (stray)
+cache/
