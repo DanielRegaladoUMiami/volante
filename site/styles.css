@@ -82,11 +82,8 @@ h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.05; margin:
 .flash-err { background: rgba(232, 80, 63, 0.12); color: var(--coral-dark); }
 
 /* Hero art */
-.hero-art { display: none; position: relative; justify-self: center; }
-.glow { position: absolute; inset: -30% -10%; background: radial-gradient(circle at 60% 40%,
-  rgba(255, 107, 94, 0.35), transparent 60%), radial-gradient(circle at 30% 70%,
-  rgba(14, 110, 110, 0.28), transparent 55%); filter: blur(8px); }
-.wheel { position: relative; font-size: 8rem; transform: rotate(-8deg); }
+.hero-art { position: relative; justify-self: center; width: 100%; max-width: 520px; margin-top: 1.6rem; }
+.hero-art img { width: 100%; height: auto; display: block; border-radius: 28px; box-shadow: var(--shadow); }
 
 /* Sections */
 .section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
@@ -143,6 +140,6 @@ h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.05; margin:
 }
 @media (min-width: 960px) {
   .hero-grid { grid-template-columns: 1.25fr 0.75fr; }
-  .hero-art { display: block; }
+  .hero-art { margin-top: 0; }
   .steps { grid-template-columns: repeat(4, 1fr); }
 }
