@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://danielregaladoumiami.github.io/volante/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://danielregaladoumiami.github.io/volante/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danielregaladoumiami.github.io/volante/en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://danielregaladoumiami.github.io/volante/"/>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://danielregaladoumiami.github.io/volante/en.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://danielregaladoumiami.github.io/volante/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danielregaladoumiami.github.io/volante/en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://danielregaladoumiami.github.io/volante/"/>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://danielregaladoumiami.github.io/volante/privacy.html</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://danielregaladoumiami.github.io/volante/terms.html</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+</urlset>

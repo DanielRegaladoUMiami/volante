@@ -63,6 +63,15 @@ production DB, no rework) and remains the planned migration target if volume gro
 `Code.gs` in `docs/waitlist-google-sheet-setup.md`; the page posts form-urlencoded via
 `fetch(mode:'no-cors')`. The `/exec` URL is public (not a secret).
 
+## 2026-06-04 — M2 hardening (post-audit)
+
+**D11 — SEO + legal hardening of the live landing**, from a 6-lens audit of the live site.
+- **Hero illustration:** custom warm SVG (Miami night, car heading to a lit house) replaced the 🚗 emoji.
+- **Social:** `og.svg` → rendered `og.png` (1200×630) banner + OG/Twitter tags (WhatsApp/social shares were rendering blank).
+- **SEO:** absolute `hreflang` (es/en/x-default) + self `canonical` on both pages (relative hreflang was being ignored by Google), `robots.txt`, `sitemap.xml`.
+- **Legal reframe (lowers regulatory exposure):** copy shifted to pre-launch/future — badge "Próximamente · lista de espera", "Así funcionará", "Esperamos lanzar", driver-vetting as a forward promise, "costos de referencia, no precios de Volante", and a "no paid car moves without commercial coverage" trust line. Added bilingual `privacy.html` + `terms.html` (waitlist-only, no service offered; not legal advice — review with counsel).
+- *Note:* the audit also **hallucinated** a non-existent "Coconnut Grove" typo (all files spell it correctly) — treat audit specifics with verification. Contact on legal pages uses IG @volante.miami (not yet created) rather than publishing Daniel's personal email.
+
 ---
 
 ### How this decision was reached

@@ -20,6 +20,9 @@
 - [x] FastAPI + Jinja2 + custom CSS (server-rendered for SEO); 6 tests green
 - [x] Deploy live (free) — static site on GitHub Pages → https://danielregaladoumiami.github.io/volante/
       (source in `site/`, auto-deploy via `.github/workflows/pages.yml`)
+- [x] Hero illustration (SVG, Miami night) + og:image social banner (1200×630)
+- [x] SEO: absolute hreflang + canonical, robots.txt, sitemap.xml
+- [x] Legal reframe to pre-launch/future copy + bilingual privacy.html + terms.html
 - [ ] Connect Google Sheet (Apps Script) — replace `__SHEET_WEBAPP_URL__` in `site/index.html` + `site/en.html`; see `docs/waitlist-google-sheet-setup.md`
 - [ ] Point a custom domain (add `site/CNAME`) once chosen
 - [ ] Full booking form (pickup, drop-off, passengers, car make/model) — folds into M3
