@@ -72,6 +72,24 @@ production DB, no rework) and remains the planned migration target if volume gro
 - **Legal reframe (lowers regulatory exposure):** copy shifted to pre-launch/future — badge "Próximamente · lista de espera", "Así funcionará", "Esperamos lanzar", driver-vetting as a forward promise, "costos de referencia, no precios de Volante", and a "no paid car moves without commercial coverage" trust line. Added bilingual `privacy.html` + `terms.html` (waitlist-only, no service offered; not legal advice — review with counsel).
 - *Note:* the audit also **hallucinated** a non-existent "Coconnut Grove" typo (all files spell it correctly) — treat audit specifics with verification. Contact on legal pages uses IG @volante.miami (not yet created) rather than publishing Daniel's personal email.
 
+## 2026-06-04 — MVP product: interactive estimator + pilot-ride request
+
+**D12 — The MVP product is an interactive flat-fare/savings estimator + pilot-ride request**, static
++ Google-Sheet-backed (no backend, $0, insurance-safe). `pedir.html`/`request.html` + `estimator.js`:
+the user picks pickup + home zones → instant estimated flat fare → requests a pilot spot → lands in the
+same Sheet (`Source=request-*`, with Pickup/Dropoff/Estimate); the Sheet's `Status` column is the
+manual dispatch board. Linked from both landings ("💸 Calcula tu tarifa").
+- *Why this shape:* matches the research's "concierge MVP + manual dispatch" and the audit's "Sheet as
+  dispatch board / measure ride intent + probe the $99 price" — delivered live & free, no hosting, no
+  cold starts. The FastAPI app in `src/volante/` stays as the M3 backend (build a real admin only past
+  ~5 rides/weekend).
+- *Honesty guardrails (important):* fares labeled "estimada · piloto, sin validar". The Node check
+  showed Volante's flat fare is **higher** than a surged one-way Uber on short core rides — so the
+  comparison was reframed to NOT claim false savings; it sells the real value (your car comes home, no
+  $516 tow, no $10k DUI). Framed explicitly as "un piloto, no un cobro — no pagas nada ahora", so it's
+  legal pre-coverage. Fare formula is illustrative (zone-grid distance), to be replaced by validated
+  pilot data.
+
 ---
 
 ### How this decision was reached

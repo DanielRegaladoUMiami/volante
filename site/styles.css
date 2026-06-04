@@ -77,6 +77,9 @@ h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.05; margin:
 .join-row select:focus, .join-row input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 4px var(--ring); }
 .join-row .btn { flex: 1 1 100%; justify-content: center; }
 .join-micro { color: var(--muted); font-size: 0.85rem; margin: 0.8rem 0 0; }
+.hero-secondary { margin: 1.1rem 0 0; font-weight: 700; }
+.hero-secondary a { color: var(--teal-dark); }
+.hero-secondary a:hover { color: var(--coral); }
 .flash { font-weight: 600; padding: 0.7rem 0.9rem; border-radius: 12px; margin: 0 0 0.9rem; }
 .flash-ok { background: rgba(14, 110, 110, 0.12); color: var(--teal-dark); }
 .flash-err { background: rgba(232, 80, 63, 0.12); color: var(--coral-dark); }
@@ -157,4 +160,35 @@ h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.05; margin:
   .hero-grid { grid-template-columns: 1.25fr 0.75fr; }
   .hero-art { margin-top: 0; }
   .steps { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Fare estimator */
+.est-wrap { max-width: 720px; }
+.est-card { background: var(--card); border: 1px solid var(--sand); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(1.2rem, 3vw, 1.8rem); margin-top: 1.6rem; }
+.est-selects { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+.est-field { display: flex; flex-direction: column; gap: 0.4rem; font-weight: 700; font-size: 0.92rem; color: var(--teal-dark); }
+.est-field select { font: inherit; font-weight: 500; color: var(--ink); padding: 0.8rem 0.9rem; border-radius: 12px; border: 1.5px solid var(--sand); background: #fff; }
+.est-field select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 4px var(--ring); }
+.est-result { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.4rem 0 0.6rem; }
+.est-fare-block { background: var(--teal-dark); color: var(--cream); border-radius: 16px; padding: 1.3rem; text-align: center; }
+.est-fare-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #ffd9a8; font-weight: 700; }
+.est-fare-big { font-family: "Fraunces", serif; font-size: clamp(3rem, 10vw, 4rem); font-weight: 700; line-height: 1; margin: 0.3rem 0; }
+.est-fare-note { font-size: 0.78rem; color: rgba(255, 246, 236, 0.78); }
+.est-compare { background: var(--cream); border: 1px solid var(--sand); border-radius: 16px; padding: 1.1rem; }
+.est-compare-head { font-family: "Fraunces", serif; font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; gap: 0.5rem; }
+.est-compare-sub { color: var(--muted); font-size: 0.85rem; margin: 0.3rem 0 0.6rem; }
+.est-row { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.35rem 0; border-top: 1px solid var(--sand); color: var(--ink); font-size: 0.92rem; }
+.est-row.est-total { font-weight: 700; color: var(--coral-dark); }
+.est-keep { background: rgba(255, 107, 94, 0.1); color: var(--coral-dark); font-weight: 600; border-radius: 12px; padding: 0.8rem 1rem; margin: 0.2rem 0 0; }
+.est-keep:empty { display: none; }
+.req-form { margin-top: 1.3rem; border-top: 1px solid var(--sand); padding-top: 1.3rem; }
+.req-row { display: flex; gap: 0.6rem; }
+.req-form input[type="text"], .req-form input[type="number"] { font: inherit; padding: 0.8rem 0.9rem; border-radius: 12px; border: 1.5px solid var(--sand); background: #fff; color: var(--ink); width: 100%; margin-bottom: 0.6rem; }
+.req-form input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 4px var(--ring); }
+.req-row input[name="contact"] { flex: 1 1 auto; }
+.req-row input[name="passengers"] { flex: 0 0 84px; }
+.req-form .btn { width: 100%; justify-content: center; margin-top: 0.2rem; }
+@media (min-width: 620px) {
+  .est-selects { grid-template-columns: 1fr 1fr; }
+  .est-result { grid-template-columns: 1fr 1fr; }
 }

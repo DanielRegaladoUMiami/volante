@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calcula tu tarifa y reserva tu piloto — Volante</title>
+  <meta name="description" content="Calcula la tarifa fija estimada para que un conductor lleve tu propio carro a casa en Miami, y reserva tu lugar en el piloto de Volante." />
+  <link rel="canonical" href="https://danielregaladoumiami.github.io/volante/pedir.html" />
+  <link rel="alternate" hreflang="es" href="https://danielregaladoumiami.github.io/volante/pedir.html" />
+  <link rel="alternate" hreflang="en" href="https://danielregaladoumiami.github.io/volante/request.html" />
+  <link rel="alternate" hreflang="x-default" href="https://danielregaladoumiami.github.io/volante/pedir.html" />
+  <meta property="og:title" content="Calcula tu tarifa — Volante" />
+  <meta property="og:description" content="Tarifa fija estimada para llevar tu propio carro a casa en Miami. Reserva tu piloto." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://danielregaladoumiami.github.io/volante/pedir.html" />
+  <meta property="og:image" content="https://danielregaladoumiami.github.io/volante/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://danielregaladoumiami.github.io/volante/og.png" />
+  <meta name="theme-color" content="#FF6B5E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="./index.html">volante</a>
+    <nav class="nav-links">
+      <a class="nav-how" href="./index.html">Inicio</a>
+      <a class="lang-toggle" href="./request.html" hreflang="en">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container est-wrap">
+      <span class="kicker">Calcula y reserva</span>
+      <h1 class="section-title">¿Cuánto cuesta llegar a casa con tu propio carro?</h1>
+      <p class="hero-sub">Elige de dónde sales y a dónde vas. Te damos una tarifa fija estimada y te guardamos un lugar en el piloto. No pagas nada ahora.</p>
+
+      <div id="estimator" data-lang="es" class="est-card">
+        <div class="est-selects">
+          <label class="est-field">Sales de
+            <select id="est-pickup" aria-label="Sales de">
+              <option value="">Elige tu zona</option>
+              <option>Brickell</option><option>Downtown</option><option>Edgewater</option>
+              <option>Wynwood</option><option>Midtown</option><option>Little Havana</option>
+              <option>Coconut Grove</option><option>Coral Gables</option><option>South Beach</option>
+              <option>Mid-Beach</option><option>Key Biscayne</option>
+            </select>
+          </label>
+          <label class="est-field">Vas a casa en
+            <select id="est-dropoff" aria-label="Vas a casa en">
+              <option value="">Elige tu zona</option>
+              <option>Brickell</option><option>Downtown</option><option>Edgewater</option>
+              <option>Wynwood</option><option>Midtown</option><option>Little Havana</option>
+              <option>Coconut Grove</option><option>Coral Gables</option><option>South Beach</option>
+              <option>Mid-Beach</option><option>Key Biscayne</option><option>Aventura</option>
+              <option>Doral</option><option>Kendall</option><option>Homestead</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="est-result">
+          <div class="est-fare-block">
+            <div class="est-fare-label" id="est-fare-label">Tu tarifa fija estimada</div>
+            <div id="est-fare" class="est-fare-big">—</div>
+            <div id="est-fare-note" class="est-fare-note">Elige de dónde sales y a dónde vas a casa.</div>
+          </div>
+          <div id="est-compare" class="est-compare"></div>
+        </div>
+        <p id="est-keep" class="est-keep"></p>
+
+        <form id="request-form" class="req-form" action="__SHEET_WEBAPP_URL__" method="POST">
+          <input type="hidden" name="source" value="request-es" />
+          <input type="hidden" name="lang" value="es" />
+          <input type="hidden" name="pickup" id="f-pickup" />
+          <input type="hidden" name="dropoff" id="f-dropoff" />
+          <input type="hidden" name="estimate" id="f-estimate" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+          <div id="req-flash" role="status" aria-live="polite"></div>
+          <div class="req-row">
+            <input name="contact" type="text" inputmode="email" placeholder="Tu WhatsApp o email" autocomplete="email" required />
+            <input name="passengers" type="number" min="1" max="6" value="1" aria-label="pasajeros" title="pasajeros" />
+          </div>
+          <input name="when" type="text" placeholder="¿Qué noche, más o menos? (ej. viernes ~11pm)" />
+          <button class="btn" type="submit">Reserva mi lugar en el piloto <span aria-hidden="true">→</span></button>
+          <p class="join-micro">Es un <strong>piloto</strong>, no un cobro: no pagas nada ahora y no estás reservando un viaje garantizado. <a href="./terms.html">Términos</a> · <a href="./privacy.html">Privacidad</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="foot-note">Volante está en desarrollo — aún no operativo. Las tarifas son estimados ilustrativos, sin validar.</p>
+    <p class="foot-links"><a href="./privacy.html">Privacidad</a> · <a href="./terms.html">Términos</a></p>
+    <p class="foot-legal">© 2026 Volante · Miami, FL</p>
+  </div>
+</footer>
+
+<script src="./estimator.js" defer></script>
+</body>
+</html>

@@ -23,6 +23,10 @@
 - [x] Hero illustration (SVG, Miami night) + og:image social banner (1200×630)
 - [x] SEO: absolute hreflang + canonical, robots.txt, sitemap.xml
 - [x] Legal reframe to pre-launch/future copy + bilingual privacy.html + terms.html
+- [x] **MVP product loop**: interactive fare/savings estimator + pilot-ride request
+      (`pedir.html`/`request.html` + `estimator.js`) → same Google Sheet; `Status` column = manual
+      dispatch board. Completes the concierge MVP (request → estimate → Sheet → manual dispatch),
+      no payment, insurance-safe.
 - [ ] Connect Google Sheet (Apps Script) — replace `__SHEET_WEBAPP_URL__` in `site/index.html` + `site/en.html`; see `docs/waitlist-google-sheet-setup.md`
 - [ ] Point a custom domain (add `site/CNAME`) once chosen
 - [ ] Full booking form (pickup, drop-off, passengers, car make/model) — folds into M3

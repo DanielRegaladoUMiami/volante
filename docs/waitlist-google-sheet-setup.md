@@ -40,9 +40,12 @@ function doPost(e) {
     }
 
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Timestamp', 'Contact', 'Zone', 'Lang', 'Source']);
+      sheet.appendRow(['Timestamp', 'Source', 'Status', 'Contact', 'Lang', 'Zone',
+                       'Pickup', 'Dropoff', 'Passengers', 'Estimate', 'When']);
     }
-    sheet.appendRow([new Date(), p.contact || '', p.zone || '', p.lang || '', p.source || 'landing']);
+    sheet.appendRow([new Date(), p.source || 'landing', 'new', p.contact || '', p.lang || '',
+                     p.zone || '', p.pickup || '', p.dropoff || '', p.passengers || '',
+                     p.estimate || '', p.when || '']);
 
     return ContentService.createTextOutput(JSON.stringify({ result: 'ok' }))
       .setMimeType(ContentService.MimeType.JSON);
@@ -62,3 +65,8 @@ function doPost(e) {
   (the `/exec` URL stays the same).
 - Light spam protection: a hidden honeypot field. If spam gets bad later, we can add a shared token or
   a captcha — or migrate to Supabase (the M3 database) and reuse this same data via CSV import.
+- **One Sheet, two forms = your dispatch board.** `Source` `landing-*` rows are waitlist signups;
+  `request-*` rows are pilot-ride requests (with Pickup / Dropoff / Estimate / When). The **`Status`
+  column is the board**: filter to `request-*` + `Status = new`, work each ride (`new → assigned →
+  done`), and message the customer on WhatsApp using their `Contact`. No admin app needed until you're
+  past ~5 rides/weekend (then the FastAPI app in `src/volante/` becomes the M3 backend).

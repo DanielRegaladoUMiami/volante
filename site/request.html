@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estimate your fare & book your pilot — Volante</title>
+  <meta name="description" content="Estimate the flat fare for a driver to take your own car home in Miami, and grab your spot in the Volante pilot." />
+  <link rel="canonical" href="https://danielregaladoumiami.github.io/volante/request.html" />
+  <link rel="alternate" hreflang="es" href="https://danielregaladoumiami.github.io/volante/pedir.html" />
+  <link rel="alternate" hreflang="en" href="https://danielregaladoumiami.github.io/volante/request.html" />
+  <link rel="alternate" hreflang="x-default" href="https://danielregaladoumiami.github.io/volante/pedir.html" />
+  <meta property="og:title" content="Estimate your fare — Volante" />
+  <meta property="og:description" content="Flat-fare estimate to bring your own car home in Miami. Book your pilot." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://danielregaladoumiami.github.io/volante/request.html" />
+  <meta property="og:image" content="https://danielregaladoumiami.github.io/volante/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://danielregaladoumiami.github.io/volante/og.png" />
+  <meta name="theme-color" content="#FF6B5E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="./en.html">volante</a>
+    <nav class="nav-links">
+      <a class="nav-how" href="./en.html">Home</a>
+      <a class="lang-toggle" href="./pedir.html" hreflang="es">ES</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container est-wrap">
+      <span class="kicker">Estimate & book</span>
+      <h1 class="section-title">What does getting home in your own car cost?</h1>
+      <p class="hero-sub">Pick where you're out and where home is. We'll give you an estimated flat fare and save your spot in the pilot. You pay nothing now.</p>
+
+      <div id="estimator" data-lang="en" class="est-card">
+        <div class="est-selects">
+          <label class="est-field">You're out in
+            <select id="est-pickup" aria-label="You're out in">
+              <option value="">Choose your area</option>
+              <option>Brickell</option><option>Downtown</option><option>Edgewater</option>
+              <option>Wynwood</option><option>Midtown</option><option>Little Havana</option>
+              <option>Coconut Grove</option><option>Coral Gables</option><option>South Beach</option>
+              <option>Mid-Beach</option><option>Key Biscayne</option>
+            </select>
+          </label>
+          <label class="est-field">Home is in
+            <select id="est-dropoff" aria-label="Home is in">
+              <option value="">Choose your area</option>
+              <option>Brickell</option><option>Downtown</option><option>Edgewater</option>
+              <option>Wynwood</option><option>Midtown</option><option>Little Havana</option>
+              <option>Coconut Grove</option><option>Coral Gables</option><option>South Beach</option>
+              <option>Mid-Beach</option><option>Key Biscayne</option><option>Aventura</option>
+              <option>Doral</option><option>Kendall</option><option>Homestead</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="est-result">
+          <div class="est-fare-block">
+            <div class="est-fare-label" id="est-fare-label">Your estimated flat fare</div>
+            <div id="est-fare" class="est-fare-big">—</div>
+            <div id="est-fare-note" class="est-fare-note">Pick where you're out and where home is.</div>
+          </div>
+          <div id="est-compare" class="est-compare"></div>
+        </div>
+        <p id="est-keep" class="est-keep"></p>
+
+        <form id="request-form" class="req-form" action="__SHEET_WEBAPP_URL__" method="POST">
+          <input type="hidden" name="source" value="request-en" />
+          <input type="hidden" name="lang" value="en" />
+          <input type="hidden" name="pickup" id="f-pickup" />
+          <input type="hidden" name="dropoff" id="f-dropoff" />
+          <input type="hidden" name="estimate" id="f-estimate" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+          <div id="req-flash" role="status" aria-live="polite"></div>
+          <div class="req-row">
+            <input name="contact" type="text" inputmode="email" placeholder="Your WhatsApp or email" autocomplete="email" required />
+            <input name="passengers" type="number" min="1" max="6" value="1" aria-label="passengers" title="passengers" />
+          </div>
+          <input name="when" type="text" placeholder="Which night, roughly? (e.g. Friday ~11pm)" />
+          <button class="btn" type="submit">Save my pilot spot <span aria-hidden="true">→</span></button>
+          <p class="join-micro">It's a <strong>pilot</strong>, not a charge: you pay nothing now and you're not booking a guaranteed ride. <a href="./terms.html">Terms</a> · <a href="./privacy.html">Privacy</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="foot-note">Volante is in development — not yet operating. Fares are illustrative, unvalidated estimates.</p>
+    <p class="foot-links"><a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></p>
+    <p class="foot-legal">© 2026 Volante · Miami, FL</p>
+  </div>
+</footer>
+
+<script src="./estimator.js" defer></script>
+</body>
+</html>
