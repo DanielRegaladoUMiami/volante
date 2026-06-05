@@ -48,8 +48,7 @@
         <h1 class="hero-title">Te llevamos a ti <span class="accent">y a tu carro</span> a casa.</h1>
         <p class="hero-sub">Un conductor bilingüe de confianza manejará tu propio carro hasta tu casa. Sin membresía. Sin mínimo. Precio fijo.</p>
 
-        <!-- Google Sheet (Apps Script): reemplaza __SHEET_WEBAPP_URL__ con la URL /exec del web app. Ver docs/waitlist-google-sheet-setup.md -->
-        <form id="unete" class="join-card" action="__SHEET_WEBAPP_URL__" method="POST">
+        <form id="unete" class="join-card" action="https://danielregaladocardoso-volante.hf.space/api/waitlist" method="POST">
           <input type="hidden" name="lang" value="es" />
           <input type="hidden" name="source" value="landing-es" />
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
@@ -135,16 +134,15 @@
     var flash = document.getElementById('flash');
     var OK = "¡Listo! Te avisamos en cuanto lancemos en tu zona. 🚗";
     var ERR = "Algo salió mal. Inténtalo de nuevo.";
-    var SOON = "¡Pronto! (falta conectar la hoja de Google para activar la lista.)";
     function show(kind, msg) {
       flash.className = "flash " + (kind === "ok" ? "flash-ok" : "flash-err");
       flash.textContent = msg;
     }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (form.action.indexOf('__SHEET_WEBAPP_URL__') !== -1) { show('ok', SOON); return; }
-      fetch(form.action, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
-        .then(function () { form.reset(); show('ok', OK); })
+      fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (d) { if (d && d.ok) { form.reset(); show('ok', OK); } else { show('err', ERR); } })
         .catch(function () { show('err', ERR); });
     });
   })();

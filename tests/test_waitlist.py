@@ -6,6 +6,7 @@ import tempfile
 _fd, _db_path = tempfile.mkstemp(suffix=".db")
 os.close(_fd)
 os.environ["DATABASE_URL"] = f"sqlite:///{_db_path}"  # isolated file DB for the test run
+os.environ["VOLANTE_ADMIN_TOKEN"] = "testtok"
 
 from fastapi.testclient import TestClient  # noqa: E402
 
@@ -36,7 +37,7 @@ def test_api_waitlist_persists():
     data = {"contact": "+13055551234", "zone": "Brickell", "lang": "es"}
     r = client.post("/api/waitlist", data=data)
     assert r.status_code == 200 and r.json() == {"ok": True}
-    admin = client.get("/admin")  # no token set in env -> open in test
+    admin = client.get("/admin?token=testtok")  # no token set in env -> open in test
     assert admin.status_code == 200
     assert "+13055551234" in admin.text
 
@@ -54,7 +55,7 @@ def test_api_request_persists_and_shows_on_board():
         },
     )
     assert r.status_code == 200 and r.json() == {"ok": True}
-    board = client.get("/admin").text
+    board = client.get("/admin?token=testtok").text
     assert "Wynwood" in board and "Kendall" in board and "rider@example.com" in board
 
 
@@ -66,4 +67,8 @@ def test_waitlist_rejects_blank_contact():
 def test_honeypot_silently_dropped():
     r = client.post("/api/waitlist", data={"contact": "+13050000000", "_gotcha": "bot"})
     assert r.json() == {"ok": True}
-    assert "+13050000000" not in client.get("/admin").text
+    assert "+13050000000" not in client.get("/admin?token=testtok").text
+
+
+def test_admin_requires_token():
+    assert client.get("/admin").status_code == 403

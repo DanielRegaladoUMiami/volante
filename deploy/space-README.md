@@ -6,7 +6,7 @@ colorTo: green
 sdk: docker
 app_port: 7860
 pinned: false
-short_description: Miami — we drive you AND your car home (pilot waitlist + fare estimator)
+short_description: Miami — we drive you and your car home (pilot)
 ---
 
 # Volante

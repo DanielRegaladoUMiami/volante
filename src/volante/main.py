@@ -109,7 +109,8 @@ def api_request(
 
 
 def _authed(token: str | None) -> bool:
-    return not ADMIN_TOKEN or token == ADMIN_TOKEN
+    # Fail closed: keep /admin private until VOLANTE_ADMIN_TOKEN is set (protect PII).
+    return bool(ADMIN_TOKEN) and token == ADMIN_TOKEN
 
 
 def _wa(contact: str) -> str:
@@ -140,9 +141,11 @@ def admin_update(booking_id: int, status: str = Form(...), token: str = Form(def
 @app.get("/admin", response_class=HTMLResponse)
 def admin(token: str | None = None):
     if not _authed(token):
-        return HTMLResponse(
-            "<h1>403</h1><p>Add <code>?token=YOUR_TOKEN</code> to the URL.</p>", status_code=403
+        msg = (
+            "<h1>Protected</h1><p>Set <code>VOLANTE_ADMIN_TOKEN</code> in the Space Secrets, "
+            "then open <code>/admin?token=YOUR_TOKEN</code>.</p>"
         )
+        return HTMLResponse(msg, status_code=403)
     tok = html.escape(token or "")
     with Session(engine) as s:
         bookings = s.exec(select(Booking).order_by(Booking.id.desc())).all()

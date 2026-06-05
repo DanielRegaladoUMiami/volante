@@ -133,19 +133,14 @@
       ? "Saved! You're on the pilot list — we'll reach out on WhatsApp. 🚗"
       : "¡Listo! Estás en la lista del piloto — te escribimos por WhatsApp. 🚗";
     var ERR = lang === "en" ? "Something went wrong. Try again." : "Algo salió mal. Inténtalo de nuevo.";
-    var SOON = lang === "en"
-      ? "Coming soon! (Google Sheet isn't connected yet.)"
-      : "¡Pronto! (falta conectar la hoja de Google.)";
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!pickup.value || !dropoff.value) { render(); return; }
       flash.className = "flash";
-      if (form.action.indexOf("__SHEET_WEBAPP_URL__") !== -1) {
-        flash.className = "flash flash-ok"; flash.textContent = SOON; return;
-      }
-      fetch(form.action, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) })
-        .then(function () { form.reset(); render(); flash.className = "flash flash-ok"; flash.textContent = OK; })
+      fetch(form.action, { method: "POST", body: new URLSearchParams(new FormData(form)) })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (d) { if (d && d.ok) { form.reset(); render(); flash.className = "flash flash-ok"; flash.textContent = OK; } else { flash.className = "flash flash-err"; flash.textContent = ERR; } })
         .catch(function () { flash.className = "flash flash-err"; flash.textContent = ERR; });
     });
   }
