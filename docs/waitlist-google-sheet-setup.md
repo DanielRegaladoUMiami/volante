@@ -1,5 +1,10 @@
 # Waitlist → Google Sheet (Apps Script) setup
 
+> ⚠️ **LEGACY / optional.** Capture now runs through the FastAPI backend on the Hugging Face Space
+> (`POST /api/waitlist` + `/api/request`, see [DECISIONS.md](DECISIONS.md) D13). Keep this only as a
+> no-backend fallback.
+
+
 The static landing page (`site/index.html` + `site/en.html`) sends each signup to a Google Sheet
 you own, via a tiny Apps Script web app. No backend, no third-party service — just your Google account.
 

@@ -90,6 +90,26 @@ manual dispatch board. Linked from both landings ("💸 Calcula tu tarifa").
   legal pre-coverage. Fare formula is illustrative (zone-grid distance), to be replaced by validated
   pilot data.
 
+## 2026-06-04 — Real backend+frontend on a Hugging Face Docker Space
+
+**D13 — The FastAPI app is deployed as a Hugging Face Docker Space** (Daniel has HF Pro).
+→ App: **https://danielregaladocardoso-volante.hf.space** · Space: huggingface.co/spaces/DanielRegaladoCardoso/volante
+- One FastAPI app = **backend + frontend**: serves the polished `site/` static frontend, captures to
+  its own DB via `POST /api/waitlist` + `POST /api/request`, and a **fail-closed** `/admin` dispatch
+  board (status `new→assigned→done`, click-to-WhatsApp).
+- **Both frontends post to this backend:** the GH Pages site (cross-origin, CORS-allowed) and the
+  Space's own copy. → **The Google Sheet path is superseded** (`docs/waitlist-google-sheet-setup.md`
+  is now legacy/optional).
+- Packaged via `Dockerfile` (uv, uvicorn :7860, `PYTHONPATH=/app/src`). Space metadata in
+  `deploy/space-README.md` (uploaded as the Space `README.md`).
+- **Security:** `/admin` returns 403 until `VOLANTE_ADMIN_TOKEN` is set in Space Secrets (protects PII
+  on a public Space).
+- **PENDING on Daniel (2 clicks, Pro covers it):** (1) Space → Settings → enable **persistent storage**
+  and add secret `DATABASE_URL=sqlite:////data/volante.db` so rows survive restarts (today SQLite is
+  ephemeral → resets on restart); (2) add secret `VOLANTE_ADMIN_TOKEN=<his choice>` to open `/admin`.
+- Free Spaces sleep after ~48h idle (≈30–60s cold start) — fine for pilot; GH Pages stays the fast
+  public front door.
+
 ---
 
 ### How this decision was reached

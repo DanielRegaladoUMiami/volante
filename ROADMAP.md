@@ -24,9 +24,13 @@
 - [x] SEO: absolute hreflang + canonical, robots.txt, sitemap.xml
 - [x] Legal reframe to pre-launch/future copy + bilingual privacy.html + terms.html
 - [x] **MVP product loop**: interactive fare/savings estimator + pilot-ride request
-      (`pedir.html`/`request.html` + `estimator.js`) → same Google Sheet; `Status` column = manual
-      dispatch board. Completes the concierge MVP (request → estimate → Sheet → manual dispatch),
-      no payment, insurance-safe.
+      (`pedir.html`/`request.html` + `estimator.js`), no payment, insurance-safe.
+- [x] **Real backend+frontend deployed** → FastAPI on a Hugging Face Docker Space
+      (https://danielregaladocardoso-volante.hf.space): serves the frontend, `POST /api/waitlist` +
+      `/api/request` capture to its DB, fail-closed `/admin` dispatch board. GH Pages forms post here
+      too (CORS) → **Google Sheet superseded**.
+  - [ ] Daniel: enable HF **persistent storage** + `DATABASE_URL=sqlite:////data/volante.db` (else rows reset on restart)
+  - [ ] Daniel: set `VOLANTE_ADMIN_TOKEN` Space secret to open `/admin`
 - [ ] Connect Google Sheet (Apps Script) — replace `__SHEET_WEBAPP_URL__` in `site/index.html` + `site/en.html`; see `docs/waitlist-google-sheet-setup.md`
 - [ ] Point a custom domain (add `site/CNAME`) once chosen
 - [ ] Full booking form (pickup, drop-off, passengers, car make/model) — folds into M3
