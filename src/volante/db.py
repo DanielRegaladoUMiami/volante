@@ -1,5 +1,8 @@
-"""Waitlist storage. SQLite by default (no secrets, runs anywhere); swap to
-Postgres/Supabase later by setting ``DATABASE_URL``."""
+"""Storage for waitlist signups and pilot-ride requests.
+
+SQLite by default (set ``DATABASE_URL``). On a Hugging Face Space, point it at the
+persistent disk, e.g. ``DATABASE_URL=sqlite:////data/volante.db`` so rows survive restarts.
+"""
 
 from __future__ import annotations
 
@@ -26,6 +29,23 @@ class WaitlistEntry(SQLModel, table=True):
     zone: str = Field(default="")
     lang: str = Field(default="es")
     source: str = Field(default="landing")
+    created_at: datetime = Field(default_factory=_utcnow)
+
+
+class Booking(SQLModel, table=True):
+    """A pilot-ride request: the rider, their trip, the shown estimate, and dispatch status."""
+
+    id: int | None = Field(default=None, primary_key=True)
+    contact: str = Field(index=True)
+    lang: str = Field(default="es")
+    source: str = Field(default="request")
+    pickup: str = Field(default="")
+    dropoff: str = Field(default="")
+    passengers: str = Field(default="")
+    estimate: str = Field(default="")
+    when_text: str = Field(default="")
+    status: str = Field(default="new", index=True, description="new → assigned → done")
+    notes: str = Field(default="")
     created_at: datetime = Field(default_factory=_utcnow)
 
 
